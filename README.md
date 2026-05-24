@@ -33,7 +33,7 @@ I designed this hub using a single-file architecture strategy to ensure lightnin
 
 ## How to Customize the Colors for Your Own Project 🛠️
 
-You can easily adapt this layout for your own school blog, portfolio, or student magazine. Simply open [index.html](file:///Users/amit/Development/tseconomist/index.html) and edit the `:root` variables inside the `<style>` tag:
+You can easily adapt this layout for your own school blog, portfolio, or student magazine. Simply open [index.html](index.html) and edit the `:root` variables inside the `<style>` tag:
 
 ```css
 :root {
