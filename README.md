@@ -59,6 +59,16 @@ The dynamic theme engine in the `<script>` tag will automatically map your new v
 
 ---
 
+## Support & Connect 🤝
+
+If you found this template or redesign prototype helpful, I’d love to connect and hear how you're using it:
+
+- ⭐️ **Star this repository** to show your support and make it more visible to other student-led journals!
+- 💼 **Connect on LinkedIn**: Let's build our network! Reach out to me at [Amit Srivatsa](https://www.linkedin.com/in/amit-srivatsa/).
+- 🐙 **Follow on GitHub**: Stay tuned for other open-source templates, toolkits, and web projects.
+
+---
+
 ## License ⚖️
 
 This project is open-source and free to use under the **MIT License**. Feel free to copy, modify, and build upon it to empower your own academic communities.
