@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TSEconomist Redesign Pitch Hub</title>
+  <!-- Google Fonts for premium editorial feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Lora', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            brand: {
+              paper: '#FAF8F5',
+              darkPaper: '#0B0F19',
+              // Official brand blue matching the logo uploaded
+              officialBlue: '#051B82', 
+              charcoal: '#1C1917',
+              muted: '#78716C',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Premium thin scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+    .transition-all-300 {
+      transition: all 0.30s ease;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-900 font-sans transition-all-300">
+
+  <!-- Main Container -->
+  <div class="min-h-screen flex flex-col xl:flex-row">
+    
+    <!-- LEFT SIDEBAR: Board Pitch Panel & Theme Controller -->
+    <aside class="w-full xl:w-[420px] bg-white border-b xl:border-b-0 xl:border-r border-slate-200 p-6 flex flex-col justify-between shrink-0 overflow-y-auto xl:max-h-screen">
+      <div class="space-y-6">
+        
+        <!-- Logo Header -->
+        <div class="flex items-center space-x-3 pb-4 border-b border-slate-150">
+          <div class="w-10 h-10 bg-brand-officialBlue rounded flex items-center justify-center text-white font-bold text-lg" id="sidebar-logo-square">
+            TSE
+          </div>
+          <div>
+            <h1 class="font-display font-bold text-lg tracking-tight text-brand-officialBlue" id="sidebar-title">Redesign Pitch</h1>
+            <p class="text-xs text-slate-500">Proposed by a Amit Srivatsa Gorti</p>
+          </div>
+        </div>
+
+        <!-- Pitch Message (Makes the page self-explanatory to the board) -->
+        <div class="p-4 bg-blue-50/70 rounded-xl border border-blue-100 space-y-3">
+          <h2 class="font-bold text-xs text-brand-officialBlue uppercase tracking-wider flex items-center">
+            <span class="mr-1.5">👋</span> Message to the Editorial Board
+          </h2>
+          <p class="text-xs text-slate-700 leading-relaxed">
+            Hi team! I was a founding member of the <strong>TSEconomist</strong> back in 2012 during my M1 Econ studies.  
+          </p>
+          <p class="text-xs text-slate-700 leading-relaxed">
+            As a gift of good faith, I designed this modern, premium layout to replace the outdated blog look. It rightly captures the different aspects of the community while feeling like a world-class academic publication. Let me know if you like it—I would love to help you build it!
+          </p>
+        </div>
+
+        <!-- Critique Section -->
+        <div class="space-y-2">
+          <h3 class="font-bold text-xs text-slate-400 uppercase tracking-widest">Why Redesign? 🔍</h3>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4 leading-relaxed">
+            <li><strong>Editorial Hierarchy:</strong> The old design hides prestigious spotlights. This layout treats key research like a physical magazine cover.</li>
+            <li><strong>Context Division:</strong> Serious economic interviews (like Prof. Tirole) are clearly separated from fun Toulouse campus life guides.</li>
+            <li><strong>Archive Prestige:</strong> Prominently features beautiful digital covers to drive PDF downloads.</li>
+          </ul>
+        </div>
+
+        <!-- Interactive Controller -->
+        <div class="space-y-4 pt-4 border-t border-slate-150">
+          <h3 class="font-bold text-sm text-slate-800">Choose Your Blue Brand Identity 🎨</h3>
+          
+          <!-- Font Style Toggle -->
+          <div class="space-y-2">
+            <div class="grid grid-cols-1 gap-2">
+              <button onclick="changeAccent('#051B82', 'Official')" id="btn-official" class="w-full text-left px-3 py-2 text-xs font-semibold rounded-lg border-2 border-brand-officialBlue bg-blue-50 text-brand-officialBlue transition-all flex items-center justify-between">
+                <span>1. Official Logo Blue (Classic)</span>
+                <span class="w-3.5 h-3.5 rounded-full bg-[#051B82] border"></span>
+              </button>
+              <button onclick="changeAccent('#020617', 'Deep')" id="btn-deep" class="w-full text-left px-3 py-2 text-xs font-semibold rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all flex items-center justify-between">
+                <span>2. Deep Academic Navy (Elite)</span>
+                <span class="w-3.5 h-3.5 rounded-full bg-[#020617] border"></span>
+              </button>
+              <button onclick="changeAccent('#1D4ED8', 'Modern')" id="btn-modern" class="w-full text-left px-3 py-2 text-xs font-semibold rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all flex items-center justify-between">
+                <span>3. Contemporary Cobalt (Vibrant)</span>
+                <span class="w-3.5 h-3.5 rounded-full bg-[#1D4ED8] border"></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Spotlight Selector -->
+          <div>
+            <label class="text-xs font-bold text-slate-700 block mb-1">Preview Different Issue Spotlights</label>
+            <select onchange="updateSpotlightTheme(this.value)" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:border-slate-400">
+              <option value="inequalities">Issue N°43: Global Inequalities</option>
+              <option value="ai">Issue N°42: The AI Revolution</option>
+              <option value="resources">Issue N°41: Scarcity & Energy</option>
+            </select>
+          </div>
+
+          <!-- Dark Mode Toggle -->
+          <div class="flex items-center justify-between pt-2 border-t border-slate-150">
+            <span class="text-xs font-semibold text-slate-700">Simulate Night Reading Mode 🌙</span>
+            <button onclick="toggleDarkMode()" class="relative inline-flex h-6 w-11 items-center rounded-full bg-slate-200 transition-colors focus:outline-none" id="theme-toggle-btn">
+              <span class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-1" id="theme-toggle-dot"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Highlight Interactive Anchors -->
+        <div class="space-y-2 pt-4 border-t border-slate-150">
+          <h3 class="font-bold text-xs text-slate-400 uppercase tracking-widest font-sans">Visual Features ✨</h3>
+          <div class="grid grid-cols-3 gap-1.5 text-center">
+            <button onclick="highlightSection('spotlight-hero')" class="p-2 bg-slate-50 hover:bg-slate-100 rounded text-[11px] font-bold text-slate-700 border border-slate-200">Cover Grid</button>
+            <button onclick="highlightSection('journal-shelf')" class="p-2 bg-slate-50 hover:bg-slate-100 rounded text-[11px] font-bold text-slate-700 border border-slate-200">Print Shelf</button>
+            <button onclick="highlightSection('campus-split')" class="p-2 bg-slate-50 hover:bg-slate-100 rounded text-[11px] font-bold text-slate-700 border border-slate-200">Campus split</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-slate-150 text-center">
+        <p class="text-[11px] text-slate-400">
+          Drafted with pride by a TSE Alumnus.
+        </p>
+      </div>
+    </aside>
+
+    <!-- RIGHT CONTENT AREA: Redesigned Site Mockup -->
+    <main class="flex-1 bg-slate-200 p-4 lg:p-8 overflow-y-auto max-h-screen">
+      
+      <!-- Top Pitch Banner -->
+      <div class="max-w-6xl mx-auto mb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 bg-slate-900 text-white rounded-lg text-xs gap-2 shadow-md">
+        <span class="font-semibold flex items-center">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-blue-400 mr-2 animate-pulse"></span>
+          PROPOSED LAYOUT CONCEPT FOR TSECONOMIST.FR
+        </span>
+        <span class="text-slate-300">Try changing colors or previewing issues in the left sidebar!</span>
+      </div>
+
+      <!-- The Redesigned Hub Frame -->
+      <div id="magazine-frame" class="max-w-6xl mx-auto bg-brand-paper shadow-2xl rounded-xl overflow-hidden border border-slate-300 transition-all-300">
+        
+        <!-- Utility Bar -->
+        <div class="border-b border-slate-200 bg-white px-6 py-2.5 flex justify-between items-center text-[11px] font-semibold tracking-wider text-slate-500 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400">
+          <div>TOULOUSE SCHOOL OF ECONOMICS</div>
+          <div class="flex space-x-4 items-center">
+            <span class="hidden md:inline" id="issue-header-indicator">ISSUE N°43 • SPRING 2026</span>
+            <span class="px-2 py-0.5 bg-slate-100 dark:bg-zinc-800 rounded font-bold">PRINT ARCHIVES ACTIVE</span>
+          </div>
+        </div>
+
+        <!-- Redesigned Masthead -->
+        <header class="text-center py-10 px-6 border-b border-slate-200 bg-white dark:bg-zinc-900 dark:border-zinc-800">
+          <div class="max-w-3xl mx-auto">
+            <div class="text-[11px] tracking-widest text-slate-400 uppercase font-bold mb-3">The Student-Run Magazine of TSE</div>
+            <h1 class="font-display text-4xl sm:text-5xl md:text-6.5xl tracking-tight text-slate-900 dark:text-white transition-all-300">
+              The <span id="masthead-color" class="text-brand-officialBlue italic font-bold">TSEconomist</span>
+            </h1>
+            <p class="mt-4 text-xs md:text-sm text-slate-500 font-serif italic max-w-lg mx-auto leading-relaxed dark:text-zinc-400">
+              "Fostering debate and bringing economic insights straight from the heart of the Toulouse School of Economics."
+            </p>
+          </div>
+          
+          <!-- Navigation -->
+          <nav class="flex flex-wrap justify-center gap-4 md:gap-8 mt-8 border-t border-b border-slate-100 py-3 text-xs font-bold tracking-wider text-slate-700 dark:border-zinc-800 dark:text-zinc-300">
+            <a href="#" class="hover:underline text-brand-officialBlue dark:text-blue-400" id="nav-item-1">HOME</a>
+            <a href="#" class="hover:underline" id="nav-item-2">SPOTLIGHT</a>
+            <a href="#" class="hover:underline" id="nav-item-3">HOT TOPICS</a>
+            <a href="#" class="hover:underline" id="nav-item-4">ON CAMPUS</a>
+            <a href="#" class="hover:underline font-medium" id="nav-item-5">ARCHIVES</a>
+            <a href="#" class="hover:underline hidden sm:inline" id="nav-item-6">ABOUT US</a>
+          </nav>
+        </header>
+
+        <!-- Redesigned Main Editorial Grid -->
+        <section id="spotlight-hero" class="p-6 md:p-8 bg-white dark:bg-zinc-950 transition-all duration-300">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Cover Story (Left & Middle Columns) -->
+            <div class="lg:col-span-2 space-y-6">
+              <div class="flex items-center space-x-2 text-[11px] font-bold tracking-widest text-brand-officialBlue uppercase" id="badge-accent">
+                <span class="w-2 h-2 rounded-full bg-brand-officialBlue" id="badge-dot"></span>
+                <span id="spotlight-header-label">CURRENT ISSUE SPOTLIGHT • GLOBAL INEQUALITIES</span>
+              </div>
+
+              <!-- Main Cover Story Feature -->
+              <div class="group cursor-pointer">
+                <div class="overflow-hidden rounded-xl bg-slate-50 border border-slate-200 dark:bg-zinc-900 dark:border-zinc-800 relative aspect-video flex items-center justify-center p-6 sm:p-12 text-center transition-all duration-300 hover:border-slate-300">
+                  <!-- Custom Generated Abstract Art Line Overlay -->
+                  <div class="absolute inset-0 opacity-15 mix-blend-multiply dark:mix-blend-screen bg-slate-50 dark:bg-zinc-900 flex items-center justify-center pointer-events-none">
+                    <svg class="w-full h-full text-brand-officialBlue" id="svg-editorial" viewBox="0 0 100 100" preserveAspectRatio="none">
+                      <path d="M10,90 Q40,40 60,60 T90,10" fill="none" stroke="currentColor" stroke-width="2.5" />
+                      <path d="M10,90 Q30,10 50,50 T90,90" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3,3" />
+                      <circle cx="60" cy="60" r="4" fill="currentColor" />
+                      <circle cx="90" cy="10" r="3" fill="currentColor" />
+                    </svg>
+                  </div>
+                  
+                  <div class="relative z-10 max-w-xl">
+                    <span class="text-[9px] bg-slate-900 text-white font-bold px-2.5 py-1 rounded shadow-sm uppercase tracking-wider dark:bg-blue-600">EXCLUSIVE INTERVIEW</span>
+                    <h2 id="main-title" class="font-display text-2xl sm:text-3.5xl md:text-4.5xl font-bold mt-4 mb-4 tracking-tight group-hover:underline text-slate-900 dark:text-white leading-tight">
+                      Bending The Curve: Do Rising Economic Disparities Threaten Democracy?
+                    </h2>
+                    <p id="main-summary" class="text-xs sm:text-sm font-serif text-slate-600 dark:text-zinc-400 line-clamp-2 max-w-md mx-auto">
+                      In this issue's spotlight, we analyze how wealth concentration shapes policy decisions, and whether market interventions can fix systemic inequality.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Post details -->
+                <div class="mt-4 flex items-center justify-between text-xs text-slate-500 border-b border-slate-100 pb-4 dark:border-zinc-800 dark:text-zinc-400">
+                  <div class="flex items-center space-x-2">
+                    <span class="font-bold text-slate-800 dark:text-zinc-300">By Sophie Valerius (M2)</span>
+                    <span>•</span>
+                    <span>March 2026</span>
+                  </div>
+                  <div class="font-semibold text-[11px] tracking-wide text-brand-officialBlue dark:text-blue-400" id="read-time-indicator">6 MIN READ</div>
+                </div>
+              </div>
+
+              <!-- Two Column Sub-articles -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2 group cursor-pointer">
+                  <span class="text-[10px] font-bold tracking-wider text-slate-400 dark:text-zinc-500 uppercase">POLICY DEBATE</span>
+                  <h3 class="font-display font-bold text-lg text-slate-900 group-hover:underline dark:text-white" id="sub-title-1">
+                    Taxing Wealth: Effective Redistribution or Flight Risk?
+                  </h3>
+                  <p class="text-xs font-serif text-slate-600 line-clamp-2 dark:text-zinc-400" id="sub-summary-1">
+                    An empirical evaluation of recent European tax models and their long-term impact on domestic innovation hubs.
+                  </p>
+                  <span class="text-[11px] text-slate-400 block pt-1">4 min read</span>
+                </div>
+
+                <div class="space-y-2 group cursor-pointer">
+                  <span class="text-[10px] font-bold tracking-wider text-slate-400 dark:text-zinc-500 uppercase">INTERVIEW</span>
+                  <h3 class="font-display font-bold text-lg text-slate-900 group-hover:underline dark:text-white" id="sub-title-2">
+                    In Conversation with Professor Jean Tirole on Climate Inequality
+                  </h3>
+                  <p class="text-xs font-serif text-slate-600 line-clamp-2 dark:text-zinc-400" id="sub-summary-2">
+                    TSE's own Nobel laureate talks carbon pricing, global climate justice, and policy coordination in a fractured world.
+                  </p>
+                  <span class="text-[11px] text-slate-400 block pt-1">10 min read</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column Feed: Hot Topics -->
+            <div class="border-l-0 lg:border-l border-slate-200 lg:pl-8 space-y-6 dark:border-zinc-800">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-3 dark:border-zinc-800">
+                <span class="text-[11px] font-bold tracking-widest text-slate-800 uppercase dark:text-zinc-300">HOT TOPICS 🔥</span>
+                <span class="text-[10px] font-medium text-slate-400">UPDATED WEEKLY</span>
+              </div>
+
+              <div class="space-y-6">
+                <div class="group cursor-pointer">
+                  <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">MACROECONOMICS</span>
+                  <h4 class="font-display font-bold text-md text-slate-900 group-hover:underline mt-1 dark:text-white">
+                    The Silent Return of Inflation: What It Means for M2 Students
+                  </h4>
+                  <p class="text-xs font-serif text-slate-500 mt-1 dark:text-zinc-400">
+                    Why upcoming Central Bank policies are the ultimate case study for graduate students this semester.
+                  </p>
+                </div>
+
+                <div class="group cursor-pointer pt-4 border-t border-slate-100 dark:border-zinc-900">
+                  <span class="text-[10px] font-bold text-rose-600 uppercase tracking-widest">GEOPOLITICS</span>
+                  <h4 class="font-display font-bold text-md text-slate-900 group-hover:underline mt-1 dark:text-white">
+                    Trade Tensions and Green Tariffs
+                  </h4>
+                  <p class="text-xs font-serif text-slate-500 mt-1 dark:text-zinc-400">
+                    Understanding the economic chess match between the EU and international trading blocs.
+                  </p>
+                </div>
+
+                <div class="group cursor-pointer pt-4 border-t border-slate-100 dark:border-zinc-900">
+                  <span class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest">BEHAVIORAL ECONOMICS</span>
+                  <h4 class="font-display font-bold text-md text-slate-900 group-hover:underline mt-1 dark:text-white">
+                    Nudging the Common Good
+                  </h4>
+                  <p class="text-xs font-serif text-slate-500 mt-1 dark:text-zinc-400">
+                    How simple choice architecture is transforming vaccination campaigns in municipal Toulouse.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Premium Box: Print Issue Request Callout -->
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center dark:bg-zinc-900 dark:border-zinc-800">
+                <h5 class="font-display font-bold text-sm text-slate-950 dark:text-white">Founding Archives Request</h5>
+                <p class="text-xs text-slate-500 mt-1 leading-relaxed dark:text-zinc-400">Are you holding printed copies of <strong>Issues 1 through 4</strong>? Let us know so we can complete our digital restoration project!</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Archive Cover Shelf Section -->
+        <section id="journal-shelf" class="bg-slate-50 border-t border-b border-slate-200 p-6 md:p-8 dark:bg-zinc-900 dark:border-zinc-800">
+          <div class="max-w-4xl mx-auto text-center">
+            <h3 class="font-display font-bold text-2xl text-slate-900 dark:text-white mb-2">Our Print Archive Legacy</h3>
+            <p class="text-xs font-serif text-slate-500 mb-8 max-w-md mx-auto dark:text-zinc-400">
+              Preserving our student publications from the modern era all the way back to the very first issues in 2012.
+            </p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              
+              <!-- Issue 42 -->
+              <div class="bg-white p-3 rounded-lg border border-slate-200 text-center hover:shadow-md transition-shadow dark:bg-zinc-950 dark:border-zinc-800">
+                <div class="bg-slate-100 aspect-[3/4] rounded mb-3 flex flex-col justify-between p-3 border border-slate-200 dark:bg-zinc-900 dark:border-zinc-800">
+                  <span class="text-[8px] font-bold text-slate-400 dark:text-zinc-500">N°42</span>
+                  <span class="font-display text-sm font-bold text-brand-officialBlue shelf-issue-logo">TSEconomist</span>
+                  <span class="text-[9px] text-slate-500 dark:text-zinc-400">AI Revolution</span>
+                </div>
+                <h4 class="font-bold text-xs text-slate-800 dark:text-zinc-300">Issue N°42</h4>
+                <p class="text-[10px] text-slate-400">Winter 2026</p>
+                <button onclick="showMockMessage('PDF Download: Issue N°42')" class="mt-2 text-[10px] text-brand-officialBlue font-bold hover:underline block mx-auto dark:text-blue-400 select-button">Download PDF</button>
+              </div>
+
+              <!-- Issue 41 -->
+              <div class="bg-white p-3 rounded-lg border border-slate-200 text-center hover:shadow-md transition-shadow dark:bg-zinc-950 dark:border-zinc-800">
+                <div class="bg-slate-100 aspect-[3/4] rounded mb-3 flex flex-col justify-between p-3 border border-slate-200 dark:bg-zinc-900 dark:border-zinc-800">
+                  <span class="text-[8px] font-bold text-slate-400 dark:text-zinc-500">N°41</span>
+                  <span class="font-display text-sm font-bold text-brand-officialBlue shelf-issue-logo">TSEconomist</span>
+                  <span class="text-[9px] text-slate-500 dark:text-zinc-400">Scarcity & Resources</span>
+                </div>
+                <h4 class="font-bold text-xs text-slate-800 dark:text-zinc-300">Issue N°41</h4>
+                <p class="text-[10px] text-slate-400">Autumn 2025</p>
+                <button onclick="showMockMessage('PDF Download: Issue N°41')" class="mt-2 text-[10px] text-brand-officialBlue font-bold hover:underline block mx-auto dark:text-blue-400 select-button">Download PDF</button>
+              </div>
+
+              <!-- Issue 2 (Historical) -->
+              <div class="bg-white p-3 rounded-lg border border-yellow-200 text-center hover:shadow-md transition-shadow dark:bg-zinc-950 dark:border-yellow-900/30">
+                <div class="bg-amber-50/50 aspect-[3/4] rounded mb-3 flex flex-col justify-between p-3 border border-yellow-100 dark:bg-zinc-900 dark:border-zinc-800">
+                  <span class="text-[8px] font-bold text-amber-600 dark:text-amber-500">FOUNDING N°2</span>
+                  <span class="font-display text-sm font-bold text-brand-officialBlue shelf-issue-logo">TSEconomist</span>
+                  <span class="text-[9px] text-amber-700 dark:text-amber-300">Spring 2013</span>
+                </div>
+                <h4 class="font-bold text-xs text-slate-800 dark:text-zinc-300 flex items-center justify-center">
+                  Issue N°2 <span class="ml-1 text-[10px]">⭐</span>
+                </h4>
+                <p class="text-[10px] text-slate-400">Archived PDF</p>
+                <button onclick="showMockMessage('Requesting historical Issue N°2 PDF')" class="mt-2 text-[10px] text-brand-officialBlue font-bold hover:underline block mx-auto dark:text-blue-400 select-button">View Details</button>
+              </div>
+
+              <!-- Issue 1 (First Edition) -->
+              <div class="bg-white p-3 rounded-lg border border-yellow-200 text-center hover:shadow-md transition-shadow dark:bg-zinc-950 dark:border-yellow-900/30">
+                <div class="bg-amber-50/50 aspect-[3/4] rounded mb-3 flex flex-col justify-between p-3 border border-yellow-100 dark:bg-zinc-900 dark:border-zinc-800">
+                  <span class="text-[8px] font-bold text-amber-600 dark:text-amber-500">FIRST EDITION</span>
+                  <span class="font-display text-sm font-bold text-brand-officialBlue shelf-issue-logo">TSEconomist</span>
+                  <span class="text-[9px] text-amber-700 dark:text-amber-300">Autumn 2012</span>
+                </div>
+                <h4 class="font-bold text-xs text-slate-800 dark:text-zinc-300 flex items-center justify-center">
+                  Issue N°1 <span class="ml-1 text-[10px]">⭐</span>
+                </h4>
+                <p class="text-[10px] text-slate-400">Archived PDF</p>
+                <button onclick="showMockMessage('Requesting historical Issue N°1 PDF')" class="mt-2 text-[10px] text-brand-officialBlue font-bold hover:underline block mx-auto dark:text-blue-400 select-button">View Details</button>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- Campuses & Casual Life Split Grid -->
+        <section id="campus-split" class="p-6 md:p-8 bg-white dark:bg-zinc-950 transition-all duration-300">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Academics On Campus -->
+            <div class="space-y-6">
+              <div class="border-b border-slate-200 pb-3 flex justify-between items-center dark:border-zinc-800">
+                <h3 class="text-xs font-bold tracking-widest text-slate-800 dark:text-zinc-300 uppercase">On Campus News 🎓</h3>
+                <span class="text-[10px] text-brand-officialBlue font-bold dark:text-blue-400 flex items-center cursor-pointer">All Academics →</span>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex space-x-4 items-start group cursor-pointer">
+                  <div class="w-12 h-12 rounded bg-slate-50 flex items-center justify-center font-bold text-lg text-slate-400 shrink-0 dark:bg-zinc-900 dark:text-zinc-600">🏆</div>
+                  <div>
+                    <h4 class="font-display font-semibold text-sm text-slate-900 group-hover:underline dark:text-white">The TSE Teaching Awards 2025 Recaps</h4>
+                    <p class="text-xs text-slate-500 line-clamp-2 mt-0.5 dark:text-zinc-400">We celebrate the professors who made complicated formulas sound like poetry this academic semester.</p>
+                  </div>
+                </div>
+
+                <div class="flex space-x-4 items-start group cursor-pointer pt-4 border-t border-slate-100 dark:border-zinc-900">
+                  <div class="w-12 h-12 rounded bg-slate-50 flex items-center justify-center font-bold text-lg text-slate-400 shrink-0 dark:bg-zinc-900 dark:text-zinc-600">🏛️</div>
+                  <div>
+                    <h4 class="font-display font-semibold text-sm text-slate-900 group-hover:underline dark:text-white">Visiting Lectures: Lionel Cousseins on Business Analytics</h4>
+                    <p class="text-xs text-slate-500 line-clamp-2 mt-0.5 dark:text-zinc-400">A structured summary of the core strategies shared in last week's heavily attended campus talk.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Toulouse Lifestyle & Leisure -->
+            <div class="space-y-6">
+              <div class="border-b border-slate-200 pb-3 flex justify-between items-center dark:border-zinc-800">
+                <h3 class="text-xs font-bold tracking-widest text-slate-800 dark:text-zinc-300 uppercase">Toulouse Guide & Culture 🍷</h3>
+                <span class="text-[10px] text-brand-officialBlue font-bold dark:text-blue-400 flex items-center cursor-pointer">Ville Rose Spots →</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 dark:bg-zinc-900 dark:border-zinc-800">
+                  <span class="text-[8px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider dark:bg-zinc-800 dark:text-zinc-400">COFFEE</span>
+                  <h4 class="font-display font-bold text-sm text-slate-900 mt-2 dark:text-white">Café de l'Ancre</h4>
+                  <p class="text-[11px] text-slate-500 mt-1 leading-relaxed dark:text-zinc-400">The perfect quiet sanctuary to write your econometrics assignment while sipping single-origin roast.</p>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 dark:bg-zinc-900 dark:border-zinc-800">
+                  <span class="text-[8px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider dark:bg-zinc-800 dark:text-zinc-400">STUDENT BUDGET</span>
+                  <h4 class="font-display font-bold text-sm text-slate-900 mt-2 dark:text-white">The Cheaper Pitchers</h4>
+                  <p class="text-[11px] text-slate-500 mt-1 leading-relaxed dark:text-zinc-400">Our carefully researched list of the cheapest student hangouts down by the Garonne river banks.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Redesigned Footer -->
+        <footer class="bg-slate-900 text-slate-400 text-xs py-10 px-6 border-t border-slate-800 dark:bg-black">
+          <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="space-y-3">
+              <h4 class="font-display text-lg text-white font-semibold">The TSEconomist</h4>
+              <p class="text-slate-500 leading-relaxed">
+                Empowering the student body of the Toulouse School of Economics with sharp analysis, lively opinions, and modern perspectives on global and local policies.
+              </p>
+            </div>
+            
+            <div class="space-y-2">
+              <h5 class="font-bold text-white text-xs uppercase tracking-wider">Useful Links</h5>
+              <div class="grid grid-cols-2 gap-2 text-slate-500">
+                <a href="#" class="hover:text-white transition-colors">TSE Main Website</a>
+                <a href="#" class="hover:text-white transition-colors">Submit Article</a>
+                <a href="#" class="hover:text-white transition-colors">Archives Portal</a>
+                <a href="#" class="hover:text-white transition-colors">Join the Team</a>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <h5 class="font-bold text-white text-xs uppercase tracking-wider">Visit Us</h5>
+              <p class="text-slate-500 leading-relaxed">
+                Toulouse School of Economics<br>
+                Office MF006, 1 Esplanade de l'Université<br>
+                31080 Toulouse Cedex 06, France
+              </p>
+            </div>
+          </div>
+          <div class="max-w-6xl mx-auto pt-8 mt-8 border-t border-slate-800 text-center text-slate-600 text-[10px] flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
+            <p>© 2026 The TSEconomist. All rights reserved.</p>
+            <p>Initiated by M1 Students in 2012.</p>
+          </div>
+        </footer>
+
+      </div>
+
+      <!-- Action Toast Alert -->
+      <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white text-xs px-4 py-3 rounded-lg shadow-xl border border-slate-800 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center space-x-2">
+        <span>🔔</span>
+        <span id="toast-message">Action successful!</span>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // Theme switching (Light/Dark mode)
+    let isDarkMode = false;
+    function toggleDarkMode() {
+      isDarkMode = !isDarkMode;
+      const doc = document.documentElement;
+      const toggleDot = document.getElementById('theme-toggle-dot');
+      const toggleBtn = document.getElementById('theme-toggle-btn');
+      const frame = document.getElementById('magazine-frame');
+      
+      if (isDarkMode) {
+        doc.classList.add('dark');
+        frame.classList.add('dark');
+        toggleDot.classList.remove('translate-x-1');
+        toggleDot.classList.add('translate-x-6');
+        toggleBtn.classList.remove('bg-slate-200');
+        toggleBtn.classList.add('bg-blue-800');
+        showMockMessage("Simulated premium dark reading mode!");
+      } else {
+        doc.classList.remove('dark');
+        frame.classList.remove('dark');
+        toggleDot.classList.remove('translate-x-6');
+        toggleDot.classList.add('translate-x-1');
+        toggleBtn.classList.remove('bg-blue-800');
+        toggleBtn.classList.add('bg-slate-200');
+        showMockMessage("Switched back to classic editorial paper mode.");
+      }
+    }
+
+    // Changing the blue variations based on the official brand blue
+    function changeAccent(hexColor, name) {
+      // De-activate all sidebar option buttons
+      const buttons = ['btn-official', 'btn-deep', 'btn-modern'];
+      buttons.forEach(btnId => {
+        const btn = document.getElementById(btnId);
+        btn.classList.remove('border-brand-officialBlue', 'bg-blue-50', 'text-brand-officialBlue', 'border-slate-900', 'bg-slate-50', 'text-slate-900', 'border-blue-700', 'text-blue-700');
+        btn.classList.add('border-slate-200', 'text-slate-600');
+      });
+
+      const activeBtn = document.getElementById(`btn-${name.toLowerCase()}`);
+      activeBtn.classList.remove('border-slate-200', 'text-slate-600');
+
+      // Update styling properties on elements dynamically
+      document.getElementById('masthead-color').style.color = hexColor;
+      document.getElementById('badge-accent').style.color = hexColor;
+      document.getElementById('badge-dot').style.backgroundColor = hexColor;
+      document.getElementById('svg-editorial').style.color = hexColor;
+      document.getElementById('sidebar-logo-square').style.backgroundColor = hexColor;
+      document.getElementById('sidebar-title').style.color = hexColor;
+      document.getElementById('read-time-indicator').style.color = hexColor;
+
+      // Update nav link hover actions indirectly
+      for (let i = 1; i <= 6; i++) {
+        const navItem = document.getElementById(`nav-item-${i}`);
+        if (navItem) {
+          if (i === 1) {
+            navItem.style.color = hexColor;
+          } else {
+            navItem.addEventListener('mouseover', () => { navItem.style.color = hexColor; });
+            navItem.addEventListener('mouseout', () => { navItem.style.color = ''; });
+          }
+        }
+      }
+
+      // Update all print issue download/view buttons & digital brand stamps
+      const labels = document.querySelectorAll('.shelf-issue-logo');
+      labels.forEach(lbl => lbl.style.color = hexColor);
+
+      const downloadBtns = document.querySelectorAll('.select-button');
+      downloadBtns.forEach(btn => btn.style.color = hexColor);
+
+      // Visual active states for buttons
+      if (name === 'Official') {
+        activeBtn.classList.add('border-brand-officialBlue', 'bg-blue-50', 'text-brand-officialBlue');
+      } else if (name === 'Deep') {
+        activeBtn.classList.add('border-slate-950', 'bg-slate-50', 'text-slate-950');
+      } else if (name === 'Modern') {
+        activeBtn.classList.add('border-blue-700', 'bg-blue-50', 'text-blue-700');
+      }
+
+      showMockMessage(`Applied ${name} Blue palette!`);
+    }
+
+    // Dynamic Mock content updates
+    const contentDb = {
+      inequalities: {
+        header: "CURRENT ISSUE SPOTLIGHT • GLOBAL INEQUALITIES",
+        title: "Bending The Curve: Do Rising Economic Disparities Threaten Democracy?",
+        summary: "In this issue's spotlight, we analyze how wealth concentration shapes policy decisions, and whether market interventions can fix systemic inequality.",
+        sub1_title: "Taxing Wealth: Effective Redistribution or Flight Risk?",
+        sub1_desc: "An empirical evaluation of recent European tax models and their long-term impact on domestic innovation hubs.",
+        sub2_title: "In Conversation with Professor Jean Tirole on Climate Inequality",
+        sub2_desc: "TSE's own Nobel laureate talks carbon pricing, global climate justice, and policy coordination in a fractured world.",
+        indicator: "ISSUE N°43 • SPRING 2026",
+        svgPath: 'M10,90 Q40,40 60,60 T90,10'
+      },
+      ai: {
+        header: "PREVIOUS ISSUE SPOTLIGHT • ARTIFICIAL INTELLIGENCE",
+        title: "The Code of Labor: Will Generative AI Automate the Junior Analyst?",
+        summary: "Understanding the transformative shift in data-driven finance and how modern language modeling redefines entry-level programming roles.",
+        sub1_title: "Data Silos & Public Goods: The Economics of Large Models",
+        sub1_desc: "Do giant tech monopolies hold too much market power? Exploring antitrust measures for artificial intelligence.",
+        sub2_title: "Can Machine Learning Predict Human Market Panic?",
+        sub2_desc: "A systematic review of algorithmic trading patterns and psychological sentiment indicators during high-volatility events.",
+        indicator: "ISSUE N°42 • WINTER 2026",
+        svgPath: 'M10,50 L30,50 L40,20 L50,80 L60,40 L70,60 L90,50'
+      },
+      resources: {
+        header: "PREVIOUS ISSUE SPOTLIGHT • RESOURCES & ENVIRONMENT",
+        title: "The Energy Divide: Decoupling Growth from Carbon Emission Pathways",
+        summary: "Analyzing historical decoupling models in Northern Europe, and whether global supply lines can support a truly renewable transition.",
+        sub1_title: "Critical Minerals and the New Geopolitics of Lithium",
+        sub1_desc: "How South American lithium reserves shape international trade treaties and trade negotiations with the European bloc.",
+        sub2_title: "The Price of Air: Assessing Voluntary Carbon Markets",
+        sub2_desc: "A skeptical economic study of voluntary corporate carbon offsetting initiatives and their tangible biological outcomes.",
+        indicator: "ISSUE N°41 • AUTUMN 2025",
+        svgPath: 'M10,80 Q25,50 40,80 T70,20 T90,80'
+      }
+    };
+
+    function updateSpotlightTheme(issueKey) {
+      const data = contentDb[issueKey];
+      if (!data) return;
+
+      document.getElementById('spotlight-header-label').innerText = data.header;
+      document.getElementById('main-title').innerText = data.title;
+      document.getElementById('main-summary').innerText = data.summary;
+      document.getElementById('sub-title-1').innerText = data.sub1_title;
+      document.getElementById('sub-summary-1').innerText = data.sub1_desc;
+      document.getElementById('sub-title-2').innerText = data.sub2_title;
+      document.getElementById('sub-summary-2').innerText = data.sub2_desc;
+      document.getElementById('issue-header-indicator').innerText = data.indicator;
+      
+      document.querySelector('#svg-editorial path').setAttribute('d', data.svgPath);
+      showMockMessage(`Previewing content from ${data.indicator}`);
+    }
+
+    // Scroll & Highlight helper
+    function highlightSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (!element) return;
+
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      element.classList.add('ring-4', 'ring-amber-400', 'ring-opacity-85');
+      setTimeout(() => {
+        element.classList.remove('ring-4', 'ring-amber-400', 'ring-opacity-85');
+      }, 1500);
+    }
+
+    // Custom Toast Alert
+    let toastTimeout;
+    function showMockMessage(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      
+      toastMsg.innerText = msg;
+      toast.classList.remove('opacity-0', 'translate-y-20');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-20');
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
