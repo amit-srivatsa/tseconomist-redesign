@@ -36,6 +36,7 @@
       --theme-card-bg: rgba(134, 158, 102, 0.1);
       --theme-badge-bg: #1B2A3B;
       --theme-badge-text: #F7F5EF;
+      --theme-footer-bg: #1B2A3B;
     }
 
     #magazine-frame {
@@ -53,6 +54,7 @@
     .bg-theme-card { background-color: var(--theme-card-bg); }
     .bg-theme-badge { background-color: var(--theme-badge-bg); }
     .text-theme-badge { color: var(--theme-badge-text); }
+    .bg-theme-footer { background-color: var(--theme-footer-bg); }
 
     /* Premium thin scrollbar */
     ::-webkit-scrollbar {
@@ -74,49 +76,49 @@
     }
   </style>
 </head>
-<body class="bg-slate-100 text-slate-900 font-sans transition-all-300">
+<body class="bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-50 font-sans transition-all-300">
 
   <!-- Main Container -->
   <div class="min-h-screen flex flex-col xl:flex-row">
     
     <!-- LEFT SIDEBAR: Board Pitch Panel & Theme Controller -->
-    <aside class="w-full xl:w-[420px] bg-white border-b xl:border-b-0 xl:border-r border-slate-200 p-6 flex flex-col justify-between shrink-0 overflow-y-auto xl:max-h-screen">
+    <aside class="w-full xl:w-[420px] bg-white dark:bg-slate-900 border-b xl:border-b-0 xl:border-r border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-between shrink-0 overflow-y-auto xl:max-h-screen transition-all-300">
       <div class="space-y-6">
         
         <!-- Logo Header -->
-        <div class="flex items-center space-x-3 pb-4 border-b border-slate-150">
+        <div class="flex items-center space-x-3 pb-4 border-b border-slate-150 dark:border-slate-800">
           <div id="sidebar-logo-square" class="w-10 h-10 bg-[#1B2A3B] rounded flex items-center justify-center text-white font-bold text-lg transition-all-300">
             TSE
           </div>
           <div>
             <h1 id="sidebar-title" class="font-display font-bold text-lg tracking-tight text-[#1B2A3B] transition-all-300">Redesign Pitch</h1>
-            <p class="text-xs text-slate-500">Proposed by <b>Amit Srivatsa Gorti</b></p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Proposed by <b class="dark:text-white">Amit Srivatsa Gorti</b></p>
           </div>
         </div>
 
         <!-- Pitch Message (Self-explanatory to the board) -->
-        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
-          <h2 class="font-bold text-xs uppercase tracking-wider flex items-center text-slate-700">
+        <div class="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-700 space-y-3">
+          <h2 class="font-bold text-xs uppercase tracking-wider flex items-center text-slate-700 dark:text-slate-200">
             <span class="mr-1.5">👋</span> Message to the Editorial Board
           </h2>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            Hi team! I was a founding member of the <strong>TSEconomist</strong> back in 2012 during my M1 Econ studies.
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Hi team. I was a founding member of the <strong class="dark:text-white">TSEconomist</strong> during my M1 Econ studies back in 2011-12. I handled the original visual design, and it is incredible to see how much of my initial layout has survived on your current versions as well, after all these years.
           </p>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            My role in the founding team was mostly visual design. In fact, I can see that the current layout is still very similar to the original, which I had designed! As a sign of life coming full circle, I designed this premium layout concept using three beautiful custom color palettes. Try selecting different options below to see how the mockup changes. If the board likes any of these directions, I will happy to build the site for free!
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            To bring things full circle, I designed this modern layout concept as a gift to the current team. Try the interactive toggles below to preview three custom academic color palettes. If the board wants to use any of these directions, I will gladly build the live site for you for free.
           </p>
         </div>
 
         <!-- Interactive Color Theme Controller -->
-        <div class="space-y-4 pt-4 border-t border-slate-150">
-          <h3 class="font-bold text-xs text-slate-400 uppercase tracking-widest">Select Color Palette 🎨</h3>
+        <div class="space-y-4 pt-4 border-t border-slate-150 dark:border-slate-800">
+          <h3 class="font-bold text-xs text-slate-400 dark:text-slate-500 uppercase tracking-widest">Select Color Palette 🎨</h3>
           
           <div class="space-y-2">
             <!-- Theme 1 Button -->
             <button onclick="changeTheme(1)" id="btn-theme-1" class="w-full text-left px-3 py-2.5 text-xs font-semibold rounded-lg border-2 border-[#1B2A3B] bg-slate-50 text-[#1B2A3B] transition-all-300 flex items-center justify-between">
               <div class="flex flex-col">
                 <span class="font-bold">1. Scholarly Blue & Gold</span>
-                <span class="text-[10px] text-slate-500 font-normal mt-0.5">Classic academic prestige aesthetic</span>
+                <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal mt-0.5">Classic academic prestige aesthetic</span>
               </div>
               <div class="flex space-x-1">
                 <span class="w-3.5 h-3.5 rounded-full bg-[#1B2A3B] border border-white"></span>
@@ -129,7 +131,7 @@
             <button onclick="changeTheme(2)" id="btn-theme-2" class="w-full text-left px-3 py-2.5 text-xs font-semibold rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all-300 flex items-center justify-between">
               <div class="flex flex-col">
                 <span class="font-bold">2. Deep Crimson & Ivory</span>
-                <span class="text-[10px] text-slate-500 font-normal mt-0.5">Rich editorial look</span>
+                <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal mt-0.5">Rich editorial look</span>
               </div>
               <div class="flex space-x-1">
                 <span class="w-3.5 h-3.5 rounded-full bg-[#7D1D1F] border border-white"></span>
@@ -142,7 +144,7 @@
             <button onclick="changeTheme(3)" id="btn-theme-3" class="w-full text-left px-3 py-2.5 text-xs font-semibold rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all-300 flex items-center justify-between">
               <div class="flex flex-col">
                 <span class="font-bold">3. Emerald & Bronze</span>
-                <span class="text-[10px] text-slate-500 font-normal mt-0.5">Contemporary academic theme</span>
+                <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal mt-0.5">Contemporary academic theme</span>
               </div>
               <div class="flex space-x-1">
                 <span class="w-3.5 h-3.5 rounded-full bg-[#004D40] border border-white"></span>
@@ -154,8 +156,8 @@
 
           <!-- Spotlight Selector -->
           <div>
-            <label class="text-xs font-bold text-slate-700 block mb-1">Preview Different Issue Spotlights</label>
-            <select onchange="updateSpotlightTheme(this.value)" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:border-slate-400">
+            <label class="text-xs font-bold text-slate-700 dark:text-slate-350 block mb-1">Preview Different Issue Spotlights</label>
+            <select onchange="updateSpotlightTheme(this.value)" class="w-full text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-2 focus:outline-none focus:border-slate-400 dark:focus:border-slate-500 dark:text-slate-200 transition-all-300">
               <option value="inequalities">Issue N°43: Global Inequalities</option>
               <option value="ai">Issue N°42: The AI Revolution</option>
               <option value="resources">Issue N°41: Scarcity & Energy</option>
@@ -163,8 +165,8 @@
           </div>
 
           <!-- Dark Mode Toggle -->
-          <div class="flex items-center justify-between pt-2 border-t border-slate-150">
-            <span class="text-xs font-semibold text-slate-700">Simulate Night Reading Mode 🌙</span>
+          <div class="flex items-center justify-between pt-2 border-t border-slate-150 dark:border-slate-800">
+            <span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Simulate Night Reading Mode 🌙</span>
             <button onclick="toggleDarkMode()" class="relative inline-flex h-6 w-11 items-center rounded-full bg-slate-200 transition-colors focus:outline-none" id="theme-toggle-btn">
               <span class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-1" id="theme-toggle-dot"></span>
             </button>
@@ -172,26 +174,26 @@
         </div>
 
         <!-- Highlight Interactive Anchors -->
-        <div class="space-y-2 pt-4 border-t border-slate-150">
-          <h3 class="font-bold text-xs text-slate-400 uppercase tracking-widest font-sans">Visual Features ✨</h3>
+        <div class="space-y-2 pt-4 border-t border-slate-150 dark:border-slate-800">
+          <h3 class="font-bold text-xs text-slate-400 dark:text-slate-500 uppercase tracking-widest font-sans">Visual Features ✨</h3>
           <div class="grid grid-cols-3 gap-1.5 text-center">
-            <button onclick="highlightSection('spotlight-hero')" class="p-2 bg-slate-50 hover:bg-slate-100 rounded text-[11px] font-bold text-slate-700 border border-slate-200">Cover Grid</button>
-            <button onclick="highlightSection('journal-shelf')" class="p-2 bg-slate-50 hover:bg-slate-100 rounded text-[11px] font-bold text-slate-700 border border-slate-200">Print Shelf</button>
-            <button onclick="highlightSection('campus-split')" class="p-2 bg-slate-50 hover:bg-slate-100 rounded text-[11px] font-bold text-slate-700 border border-slate-200">Campus split</button>
+            <button onclick="highlightSection('spotlight-hero')" class="p-2 bg-slate-50 dark:bg-slate-800/40 hover:bg-slate-100 dark:hover:bg-slate-800 rounded text-[11px] font-bold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-all-300">Cover Grid</button>
+            <button onclick="highlightSection('journal-shelf')" class="p-2 bg-slate-50 dark:bg-slate-800/40 hover:bg-slate-100 dark:hover:bg-slate-800 rounded text-[11px] font-bold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-all-300">Print Shelf</button>
+            <button onclick="highlightSection('campus-split')" class="p-2 bg-slate-50 dark:bg-slate-800/40 hover:bg-slate-100 dark:hover:bg-slate-800 rounded text-[11px] font-bold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-all-300">Campus split</button>
           </div>
         </div>
 
       </div>
 
-      <div class="mt-6 pt-4 border-t border-slate-150 text-center">
-        <p class="text-[11px] text-slate-400">
-          Drafted with pride by a TSE Alumnus.
+      <div class="mt-6 pt-4 border-t border-slate-150 dark:border-slate-800 text-center">
+        <p class="text-[11px] text-slate-400 dark:text-slate-500">
+          Crafted with love for the Toulouse School of Economics.
         </p>
       </div>
     </aside>
 
     <!-- RIGHT CONTENT AREA: Redesigned Site Mockup -->
-    <main class="flex-1 bg-slate-200 p-4 lg:p-8 overflow-y-auto max-h-screen">
+    <main class="flex-1 bg-slate-200 dark:bg-slate-950 p-4 lg:p-8 overflow-y-auto max-h-screen transition-all-300">
       
       <!-- Top Pitch Banner -->
       <div id="top-banner" class="max-w-6xl mx-auto mb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 text-white rounded-lg text-xs gap-2 shadow-md transition-all-300">
@@ -206,7 +208,7 @@
       <div id="magazine-frame" class="max-w-6xl mx-auto shadow-2xl rounded-xl overflow-hidden border transition-all-300">
         
         <!-- Utility Bar -->
-        <div id="utility-bar" class="border-b bg-white/50 backdrop-blur-sm px-6 py-2.5 flex justify-between items-center text-[11px] font-semibold tracking-wider text-theme-secondary border-theme-border transition-all-300">
+        <div id="utility-bar" class="border-b bg-white/50 dark:bg-black/30 backdrop-blur-sm px-6 py-2.5 flex justify-between items-center text-[11px] font-semibold tracking-wider text-theme-secondary border-theme-border transition-all-300">
           <div>TOULOUSE SCHOOL OF ECONOMICS</div>
           <div class="flex space-x-4 items-center">
             <span class="hidden md:inline text-theme-secondary" id="issue-header-indicator">ISSUE N°43 • SPRING 2026</span>
@@ -215,7 +217,7 @@
         </div>
 
         <!-- Redesigned Masthead -->
-        <header id="masthead-area" class="text-center py-10 px-6 border-b border-theme-border bg-white/40 transition-all-300">
+        <header id="masthead-area" class="text-center py-10 px-6 border-b border-theme-border bg-white/40 dark:bg-black/20 transition-all-300">
           <div class="max-w-3xl mx-auto">
             <div class="text-[11px] tracking-widest text-theme-secondary uppercase font-bold mb-3">The Student-Run Magazine of TSE</div>
             <h1 class="font-display text-4xl sm:text-5xl md:text-6.5xl tracking-tight transition-all-300">
@@ -238,7 +240,7 @@
         </header>
 
         <!-- Redesigned Main Editorial Grid -->
-        <section id="spotlight-hero" class="p-6 md:p-8 bg-white/20 transition-all-300">
+        <section id="spotlight-hero" class="p-6 md:p-8 bg-white/20 dark:bg-black/10 transition-all-300">
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             <!-- Cover Story (Left & Middle Columns) -->
@@ -252,7 +254,7 @@
               <div class="group cursor-pointer">
                 <div id="cover-card" class="overflow-hidden rounded-xl border relative aspect-video flex items-center justify-center p-6 sm:p-12 text-center transition-all duration-300 hover:scale-[1.01] bg-theme-card border-theme-border">
                   <!-- Custom Generated Abstract Art Line Overlay -->
-                  <div class="absolute inset-0 opacity-15 mix-blend-multiply flex items-center justify-center pointer-events-none">
+                  <div class="absolute inset-0 opacity-15 dark:opacity-25 mix-blend-multiply dark:mix-blend-screen flex items-center justify-center pointer-events-none">
                     <svg class="w-full h-full text-theme-accent" id="svg-editorial" viewBox="0 0 100 100" preserveAspectRatio="none">
                       <path d="M10,90 Q40,40 60,60 T90,10" fill="none" stroke="currentColor" stroke-width="2.5" />
                       <path d="M10,90 Q30,10 50,50 T90,90" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3,3" />
@@ -318,7 +320,7 @@
 
               <div class="space-y-6">
                 <div class="group cursor-pointer">
-                  <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">MACROECONOMICS</span>
+                  <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">MACROECONOMICS</span>
                   <h4 class="font-display font-bold text-md group-hover:underline mt-1">
                     The Silent Return of Inflation: What It Means for M2 Students
                   </h4>
@@ -328,7 +330,7 @@
                 </div>
 
                 <div class="group cursor-pointer pt-4 border-t border-theme-border">
-                  <span class="text-[10px] font-bold text-rose-600 uppercase tracking-widest">GEOPOLITICS</span>
+                  <span class="text-[10px] font-bold text-rose-600 dark:text-rose-400 uppercase tracking-widest">GEOPOLITICS</span>
                   <h4 class="font-display font-bold text-md group-hover:underline mt-1">
                     Trade Tensions and Green Tariffs
                   </h4>
@@ -338,7 +340,7 @@
                 </div>
 
                 <div class="group cursor-pointer pt-4 border-t border-theme-border">
-                  <span class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest">BEHAVIORAL ECONOMICS</span>
+                  <span class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">BEHAVIORAL ECONOMICS</span>
                   <h4 class="font-display font-bold text-md group-hover:underline mt-1">
                     Nudging the Common Good
                   </h4>
@@ -347,19 +349,13 @@
                   </p>
                 </div>
               </div>
-
-              <!-- Premium Box: Print Issue Request Callout -->
-              <div id="archives-box" class="p-4 rounded-xl border bg-white/40 border-theme-border transition-all-300 text-center">
-                <h5 class="font-display font-bold text-sm">Founding Archives Request</h5>
-                <p class="text-xs mt-1 leading-relaxed text-theme-secondary">Are you holding printed copies of <strong>Issues 1 through 4</strong>? Let us know so we can complete our digital restoration project!</p>
-              </div>
             </div>
 
           </div>
         </section>
 
         <!-- Archive Cover Shelf Section -->
-        <section id="journal-shelf" class="border-t border-b p-6 md:p-8 transition-all-300 border-theme-border bg-white/10">
+        <section id="journal-shelf" class="border-t border-b p-6 md:p-8 transition-all-300 border-theme-border bg-white/10 dark:bg-black/15">
           <div class="max-w-4xl mx-auto text-center">
             <h3 class="font-display font-bold text-2xl mb-2">Our Print Archive Legacy</h3>
             <p class="text-xs font-serif mb-8 max-w-md mx-auto text-theme-secondary">
@@ -369,8 +365,8 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
               
               <!-- Issue 42 -->
-              <div id="shelf-card-1" class="bg-white/40 p-3 rounded-lg border text-center hover:shadow-md transition-all-300 border-theme-border">
-                <div class="bg-white/70 aspect-[3/4] rounded mb-3 flex flex-col justify-between p-3 border border-theme-border">
+              <div id="shelf-card-1" class="bg-white/40 dark:bg-black/20 p-3 rounded-lg border text-center hover:shadow-md transition-all-300 border-theme-border">
+                <div class="bg-white/70 dark:bg-black/35 aspect-[3/4] rounded mb-3 flex flex-col justify-between p-3 border border-theme-border">
                   <span class="text-[8px] font-bold text-slate-400">N°42</span>
                   <span class="font-display text-sm font-bold shelf-issue-logo transition-all-300 text-theme-accent">TSEconomist</span>
                   <span class="text-[9px] text-theme-secondary">AI Revolution</span>
@@ -381,8 +377,8 @@
               </div>
 
               <!-- Issue 41 -->
-              <div id="shelf-card-2" class="bg-white/40 p-3 rounded-lg border text-center hover:shadow-md transition-all-300 border-theme-border">
-                <div class="bg-white/70 aspect-[3/4] rounded mb-3 flex flex-col justify-between p-3 border border-theme-border">
+              <div id="shelf-card-2" class="bg-white/40 dark:bg-black/20 p-3 rounded-lg border text-center hover:shadow-md transition-all-300 border-theme-border">
+                <div class="bg-white/70 dark:bg-black/35 aspect-[3/4] rounded mb-3 flex flex-col justify-between p-3 border border-theme-border">
                   <span class="text-[8px] font-bold text-slate-400">N°41</span>
                   <span class="font-display text-sm font-bold shelf-issue-logo transition-all-300 text-theme-accent">TSEconomist</span>
                   <span class="text-[9px] text-theme-secondary">Scarcity & Resources</span>
@@ -393,8 +389,8 @@
               </div>
 
               <!-- Issue 2 (Historical) -->
-              <div id="shelf-card-3" class="p-3 rounded-lg border bg-amber-50/20 text-center hover:shadow-md transition-all-300 border-theme-border">
-                <div class="bg-white/70 aspect-[3/4] rounded mb-3 flex flex-col justify-between p-3 border border-theme-border">
+              <div id="shelf-card-3" class="p-3 rounded-lg border bg-amber-50/20 dark:bg-amber-950/20 text-center hover:shadow-md transition-all-300 border-theme-border">
+                <div class="bg-white/70 dark:bg-black/35 aspect-[3/4] rounded mb-3 flex flex-col justify-between p-3 border border-theme-border">
                   <span class="text-[8px] font-bold text-amber-600">FOUNDING N°2</span>
                   <span class="font-display text-sm font-bold shelf-issue-logo transition-all-300 text-theme-accent">TSEconomist</span>
                   <span class="text-[9px] text-amber-700">Spring 2013</span>
@@ -407,8 +403,8 @@
               </div>
 
               <!-- Issue 1 (First Edition) -->
-              <div id="shelf-card-4" class="p-3 rounded-lg border bg-amber-50/20 text-center hover:shadow-md transition-all-300 border-theme-border">
-                <div class="bg-white/70 aspect-[3/4] rounded mb-3 flex flex-col justify-between p-3 border border-theme-border">
+              <div id="shelf-card-4" class="p-3 rounded-lg border bg-amber-50/20 dark:bg-amber-950/20 text-center hover:shadow-md transition-all-300 border-theme-border">
+                <div class="bg-white/70 dark:bg-black/35 aspect-[3/4] rounded mb-3 flex flex-col justify-between p-3 border border-theme-border">
                   <span class="text-[8px] font-bold text-amber-600">FIRST EDITION</span>
                   <span class="font-display text-sm font-bold shelf-issue-logo transition-all-300 text-theme-accent">TSEconomist</span>
                   <span class="text-[9px] text-amber-700">Autumn 2012</span>
@@ -425,7 +421,7 @@
         </section>
 
         <!-- Campuses & Casual Life Split Grid -->
-        <section id="campus-split" class="p-6 md:p-8 bg-white/20 transition-all-300">
+        <section id="campus-split" class="p-6 md:p-8 bg-white/20 dark:bg-black/10 transition-all-300">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
             <!-- Academics On Campus -->
@@ -437,7 +433,7 @@
 
               <div class="space-y-4">
                 <div class="flex space-x-4 items-start group cursor-pointer">
-                  <div class="w-12 h-12 rounded bg-white/50 flex items-center justify-center font-bold text-lg shrink-0">🏆</div>
+                  <div class="w-12 h-12 rounded bg-white/50 dark:bg-black/20 flex items-center justify-center font-bold text-lg shrink-0">🏆</div>
                   <div>
                     <h4 class="font-display font-semibold text-sm group-hover:underline">The TSE Teaching Awards 2025 Recaps</h4>
                     <p class="text-xs line-clamp-2 mt-0.5 text-theme-secondary">We celebrate the professors who made complicated formulas sound like poetry this academic semester.</p>
@@ -445,7 +441,7 @@
                 </div>
 
                 <div class="flex space-x-4 items-start group cursor-pointer pt-4 border-t border-theme-border">
-                  <div class="w-12 h-12 rounded bg-white/50 flex items-center justify-center font-bold text-lg shrink-0">🏛️</div>
+                  <div class="w-12 h-12 rounded bg-white/50 dark:bg-black/20 flex items-center justify-center font-bold text-lg shrink-0">🏛️</div>
                   <div>
                     <h4 class="font-display font-semibold text-sm group-hover:underline">Visiting Lectures: Lionel Cousseins on Business Analytics</h4>
                     <p class="text-xs line-clamp-2 mt-0.5 text-theme-secondary">A structured summary of the core strategies shared in last week's heavily attended campus talk.</p>
@@ -462,14 +458,14 @@
               </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="p-4 rounded-xl bg-white/40 border border-theme-border">
-                  <span class="text-[8px] bg-white text-slate-700 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">COFFEE</span>
+                <div class="p-4 rounded-xl bg-white/40 dark:bg-black/20 border border-theme-border">
+                  <span class="text-[8px] bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">COFFEE</span>
                   <h4 class="font-display font-bold text-sm mt-2">Café de l'Ancre</h4>
                   <p class="text-[11px] mt-1 leading-relaxed text-theme-secondary">The perfect quiet sanctuary to write your econometrics assignment while sipping single-origin roast.</p>
                 </div>
 
-                <div class="p-4 rounded-xl bg-white/40 border border-theme-border">
-                  <span class="text-[8px] bg-white text-slate-700 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">STUDENT BUDGET</span>
+                <div class="p-4 rounded-xl bg-white/40 dark:bg-black/20 border border-theme-border">
+                  <span class="text-[8px] bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">STUDENT BUDGET</span>
                   <h4 class="font-display font-bold text-sm mt-2">The Cheaper Pitchers</h4>
                   <p class="text-[11px] mt-1 leading-relaxed text-theme-secondary">Our carefully researched list of the cheapest student hangouts down by the Garonne river banks.</p>
                 </div>
@@ -480,7 +476,7 @@
         </section>
 
         <!-- Redesigned Footer -->
-        <footer id="footer-section" class="text-stone-350 text-xs py-10 px-6 border-t transition-all-300 bg-theme-primary border-theme-border">
+        <footer id="footer-section" class="text-stone-350 text-xs py-10 px-6 border-t transition-all-300 bg-theme-footer border-theme-border">
           <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="space-y-3">
               <h4 class="font-display text-lg text-white font-semibold">The TSEconomist</h4>
@@ -510,7 +506,7 @@
           </div>
           <div class="max-w-6xl mx-auto pt-8 mt-8 border-t border-slate-800 text-center text-stone-500 text-[10px] flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
             <p>© 2026 The TSEconomist. All rights reserved.</p>
-            <p>Initiated by M1 Students in 2012.</p>
+            <p>Built with ❤️ by Amit</p>
           </div>
         </footer>
 
@@ -540,18 +536,20 @@
           border: 'rgba(27, 42, 59, 0.15)',
           cardBg: 'rgba(134, 158, 102, 0.1)',
           badgeBg: '#1B2A3B',
-          badgeText: '#F7F5EF'
+          badgeText: '#F7F5EF',
+          footerBg: '#1B2A3B'
         },
         dark: {
-          bg: '#1B2A3B',          // Oxford Blue
+          bg: '#111C28',          // Oxford Blue
           text: '#F7F5EF',        // Cream
           primary: '#D5B266',     // Brightened Gold
           accent: '#D5B266',      // Brightened Gold
-          secondary: '#5D7286',   // Steel Blue
-          border: 'rgba(93, 114, 134, 0.3)',
-          cardBg: 'rgba(213, 178, 102, 0.15)',
+          secondary: '#8AA3C2',   // Steel Blue
+          border: 'rgba(213, 178, 102, 0.25)',
+          cardBg: 'rgba(213, 178, 102, 0.08)',
           badgeBg: '#D5B266',
-          badgeText: '#1B2A3B'
+          badgeText: '#1B2A3B',
+          footerBg: '#090F16'
         }
       },
       2: {
@@ -562,22 +560,24 @@
           text: '#3F4245',        // Slate Gray
           primary: '#7D1D1F',     // Crimson
           accent: '#C8A36E',      // Gold
-          secondary: '#AAB1B6',   // Silver
-          border: 'rgba(170, 177, 182, 0.3)',
+          secondary: '#7F8A93',   // Silver
+          border: 'rgba(125, 29, 31, 0.15)',
           cardBg: 'rgba(200, 163, 110, 0.12)',
           badgeBg: '#7D1D1F',
-          badgeText: '#FCFAF4'
+          badgeText: '#FCFAF4',
+          footerBg: '#7D1D1F'
         },
         dark: {
-          bg: '#1A1C1E',          // Deep variant of Slate Gray
+          bg: '#1A0D0E',          // Deep variant of Crimson
           text: '#FCFAF4',        // Ivory
           primary: '#E06B6E',     // Coral-tinted Accent
           accent: '#C8A36E',      // Gold
-          secondary: '#AAB1B6',   // Silver
-          border: 'rgba(170, 177, 182, 0.2)', // Silver 20%
-          cardBg: 'rgba(170, 177, 182, 0.08)',
+          secondary: '#B0B8C0',   // Silver
+          border: 'rgba(224, 107, 110, 0.25)', // Coral 25%
+          cardBg: 'rgba(200, 163, 110, 0.08)',
           badgeBg: '#E06B6E',
-          badgeText: '#1A1C1E'
+          badgeText: '#1A0D0E',
+          footerBg: '#0F0708'
         }
       },
       3: {
@@ -588,22 +588,24 @@
           text: '#263238',        // Charcoal
           primary: '#004D40',     // Deep Emerald
           accent: '#9E7E4F',      // Bronze
-          secondary: '#4DB6AC',   // Teal
+          secondary: '#3D8E85',   // Teal
           border: 'rgba(0, 77, 64, 0.15)',
           cardBg: 'rgba(158, 126, 79, 0.12)',
           badgeBg: '#004D40',
-          badgeText: '#EDEDED'
+          badgeText: '#EDEDED',
+          footerBg: '#004D40'
         },
         dark: {
-          bg: '#004D40',          // Deep Emerald
+          bg: '#061F1B',          // Deep Emerald
           text: '#EDEDED',        // Light Gray
           primary: '#9E7E4F',     // Bronze
           accent: '#4DB6AC',      // Teal
-          secondary: '#4DB6AC',   // Teal
-          border: 'rgba(77, 182, 172, 0.2)',
-          cardBg: 'rgba(0, 61, 51, 0.6)',
+          secondary: '#80CBC4',   // Teal
+          border: 'rgba(158, 126, 79, 0.25)',
+          cardBg: 'rgba(158, 126, 79, 0.08)',
           badgeBg: '#4DB6AC',
-          badgeText: '#004D40'
+          badgeText: '#004D40',
+          footerBg: '#030F0D'
         }
       }
     };
@@ -620,18 +622,37 @@
       // Update sidebar UI elements (Keep sidebar layout elegant and separate)
       for (let i = 1; i <= 3; i++) {
         const btn = document.getElementById(`btn-theme-${i}`);
-        btn.className = "w-full text-left px-3 py-2.5 text-xs font-semibold rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all-300 flex items-center justify-between";
+        if (isDarkMode) {
+          btn.className = "w-full text-left px-3 py-2.5 text-xs font-semibold rounded-lg border border-slate-700 bg-slate-800/40 text-slate-300 hover:bg-slate-800 transition-all-300 flex items-center justify-between";
+        } else {
+          btn.className = "w-full text-left px-3 py-2.5 text-xs font-semibold rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all-300 flex items-center justify-between";
+        }
         btn.style.borderColor = '';
         btn.style.color = '';
       }
       
       const activeBtn = document.getElementById(`btn-theme-${index}`);
-      activeBtn.className = "w-full text-left px-3 py-2.5 text-xs font-semibold rounded-lg border-2 bg-slate-50 transition-all-300 flex items-center justify-between";
-      activeBtn.style.borderColor = themeData.sidebarColor;
-      activeBtn.style.color = themeData.sidebarColor;
+      if (isDarkMode) {
+        activeBtn.className = "w-full text-left px-3 py-2.5 text-xs font-semibold rounded-lg border-2 bg-slate-800 transition-all-300 flex items-center justify-between";
+        activeBtn.style.borderColor = activePalette.primary;
+        activeBtn.style.color = activePalette.primary;
+      } else {
+        activeBtn.className = "w-full text-left px-3 py-2.5 text-xs font-semibold rounded-lg border-2 bg-slate-50 transition-all-300 flex items-center justify-between";
+        activeBtn.style.borderColor = themeData.sidebarColor;
+        activeBtn.style.color = themeData.sidebarColor;
+      }
 
-      document.getElementById('sidebar-logo-square').style.backgroundColor = themeData.sidebarColor;
-      document.getElementById('sidebar-title').style.color = themeData.sidebarColor;
+      const sidebarLogo = document.getElementById('sidebar-logo-square');
+      const sidebarTitle = document.getElementById('sidebar-title');
+      if (isDarkMode) {
+        sidebarLogo.style.backgroundColor = activePalette.primary;
+        sidebarLogo.style.color = '#111827';
+        sidebarTitle.style.color = activePalette.primary;
+      } else {
+        sidebarLogo.style.backgroundColor = themeData.sidebarColor;
+        sidebarLogo.style.color = '#F7F5EF';
+        sidebarTitle.style.color = themeData.sidebarColor;
+      }
 
       // Assign custom CSS variables directly on the magazine frame to change colors immediately
       const frame = document.getElementById('magazine-frame');
@@ -644,6 +665,7 @@
       frame.style.setProperty('--theme-card-bg', activePalette.cardBg);
       frame.style.setProperty('--theme-badge-bg', activePalette.badgeBg);
       frame.style.setProperty('--theme-badge-text', activePalette.badgeText);
+      frame.style.setProperty('--theme-footer-bg', activePalette.footerBg);
 
       // Accent updates on text highlights
       document.getElementById('masthead-color').style.color = activePalette.primary;
